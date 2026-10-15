@@ -108,17 +108,17 @@ export default function App() {
     </Suspense>
   )}
   <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#F7F7F7] via-white/72 to-[#F2D3D6]/30 border border-[#E7E7E7] shadow-2xl shadow-black/10 backdrop-blur-[2px]" />
-  <article className="float-card-a absolute left-4 top-6 w-48 rounded-3xl border border-[#E7E7E7] bg-white/88 p-5 shadow-xl shadow-black/10 backdrop-blur z-10">
+  <article className="float-card-a absolute left-4 top-6 w-48 rounded-3xl border border-[#E7E7E7] bg-white/78 p-5 shadow-xl shadow-black/10 backdrop-blur z-0 opacity-75">
     <span className="block text-xs font-bold uppercase tracking-[0.18em] text-red-500">Hygiene</span>
     <strong className="mt-2 block font-[Manrope] text-xl">Everyday workplace supplies</strong>
     <p className="mt-2 text-sm text-[#666666]">Reliable consumables for clean, healthy spaces.</p>
   </article>
-  <article className="float-card-b absolute left-[72%] top-[38%] w-44 rounded-3xl border border-[#E7E7E7] bg-white/85 p-4 shadow-xl shadow-black/10 backdrop-blur z-0 opacity-80">
+  <article className="float-card-b absolute bottom-4 right-[-1rem] w-40 scale-75 rounded-3xl border border-[#E7E7E7] bg-white/70 p-3 shadow-xl shadow-black/10 backdrop-blur z-0 opacity-55">
     <span className="block text-xs font-bold uppercase tracking-[0.18em] text-red-500">Facility care</span>
     <strong className="mt-2 block font-[Manrope] text-xl">Maintenance services</strong>
     <p className="mt-2 text-sm text-[#666666]">Housekeeping, cleaning, and upkeep support.</p>
   </article>
-  <article className="float-card-c absolute bottom-4 left-8 w-48 rounded-3xl border border-[#E7E7E7] bg-white/88 p-5 shadow-xl shadow-black/10 backdrop-blur z-10">
+  <article className="float-card-c absolute bottom-4 left-8 w-48 rounded-3xl border border-[#E7E7E7] bg-white/78 p-5 shadow-xl shadow-black/10 backdrop-blur z-0 opacity-75">
     <span className="block text-xs font-bold uppercase tracking-[0.18em] text-red-500">Operations</span>
     <strong className="mt-2 block font-[Manrope] text-xl">Bulk industrial supply</strong>
     <p className="mt-2 text-sm text-[#666666]">Dependable sourcing for busy facilities.</p>
