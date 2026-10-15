@@ -113,7 +113,7 @@ export default function App() {
     <strong className="mt-2 block font-[Manrope] text-xl">Everyday workplace supplies</strong>
     <p className="mt-2 text-sm text-[#666666]">Reliable consumables for clean, healthy spaces.</p>
   </article>
-  <article className="float-card-b absolute right-4 top-36 w-52 rounded-3xl border border-[#E7E7E7] bg-white/88 p-5 shadow-xl shadow-black/10 backdrop-blur">
+  <article className="float-card-b absolute bottom-4 right-4 w-48 rounded-3xl border border-[#E7E7E7] bg-white/85 p-5 shadow-xl shadow-black/10 backdrop-blur z-0 opacity-85">
     <span className="block text-xs font-bold uppercase tracking-[0.18em] text-red-500">Facility care</span>
     <strong className="mt-2 block font-[Manrope] text-xl">Maintenance services</strong>
     <p className="mt-2 text-sm text-[#666666]">Housekeeping, cleaning, and upkeep support.</p>
