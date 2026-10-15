@@ -101,7 +101,8 @@ export default function App() {
               <p className="text-sm text-[#666666]">Serving businesses and institutions with dependable supply solutions.</p>
             </div>
             <div className="relative">
-              <div className="relative hidden h-[420px] items-center justify-center [perspective:1200px] md:flex">
+              <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80" alt="" className="mt-6 h-[300px] w-full rounded-3xl border border-[#E7E7E7] object-cover shadow-xl shadow-black/10 md:hidden" />
+            <div className="relative hidden h-[420px] items-center justify-center [perspective:1200px] md:flex">
   {enableImmersiveCanvas && (
     <Suspense fallback={null}>
       <ImmersiveCanvas />

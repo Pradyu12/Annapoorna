@@ -40,8 +40,8 @@ h1,h2,h3 { font-family: var(--font-display); letter-spacing: -0.03em; }
 }
 
 @keyframes float-card-d {
-  0%, 100% { transform: translate3d(0, 0, 0) rotateX(-6deg) rotateY(8deg) rotateZ(2deg); }
-  50% { transform: translate3d(0, -10px, 0) rotateX(-2deg) rotateY(3deg) rotateZ(0deg); }
+  0%, 100% { transform: translate3d(0, 0, 0) rotateX(-4deg) rotateY(6deg) rotateZ(2deg); }
+  50% { transform: translate3d(0, -5px, 0) rotateX(-1deg) rotateY(2deg) rotateZ(0deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
