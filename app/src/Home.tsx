@@ -101,38 +101,35 @@ export default function App() {
               <p className="text-sm text-[#666666]">Serving businesses and institutions with dependable supply solutions.</p>
             </div>
             <div className="relative">
-              <div className="relative flex h-[420px] items-center justify-center [perspective:1200px]">
+              <div className="relative hidden h-[420px] items-center justify-center [perspective:1200px] md:flex">
   {enableImmersiveCanvas && (
     <Suspense fallback={null}>
       <ImmersiveCanvas />
     </Suspense>
   )}
   <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#F7F7F7] via-white/72 to-[#F2D3D6]/30 border border-[#E7E7E7] shadow-2xl shadow-black/10 backdrop-blur-[2px]" />
-  <article className="float-card-a absolute left-4 top-6 w-52 rounded-3xl border border-[#E7E7E7] bg-white/88 p-5 shadow-xl shadow-black/10 backdrop-blur">
+  <article className="float-card-a absolute left-4 top-6 w-48 rounded-3xl border border-[#E7E7E7] bg-white/88 p-5 shadow-xl shadow-black/10 backdrop-blur z-10">
     <span className="block text-xs font-bold uppercase tracking-[0.18em] text-red-500">Hygiene</span>
     <strong className="mt-2 block font-[Manrope] text-xl">Everyday workplace supplies</strong>
     <p className="mt-2 text-sm text-[#666666]">Reliable consumables for clean, healthy spaces.</p>
   </article>
-  <article className="float-card-b absolute bottom-4 right-4 w-48 rounded-3xl border border-[#E7E7E7] bg-white/85 p-5 shadow-xl shadow-black/10 backdrop-blur z-0 opacity-85">
+  <article className="float-card-b absolute left-[72%] top-[38%] w-44 rounded-3xl border border-[#E7E7E7] bg-white/85 p-4 shadow-xl shadow-black/10 backdrop-blur z-0 opacity-80">
     <span className="block text-xs font-bold uppercase tracking-[0.18em] text-red-500">Facility care</span>
     <strong className="mt-2 block font-[Manrope] text-xl">Maintenance services</strong>
     <p className="mt-2 text-sm text-[#666666]">Housekeeping, cleaning, and upkeep support.</p>
   </article>
-  <article className="float-card-c absolute bottom-4 left-8 w-52 rounded-3xl border border-[#E7E7E7] bg-white/88 p-5 shadow-xl shadow-black/10 backdrop-blur">
+  <article className="float-card-c absolute bottom-4 left-8 w-48 rounded-3xl border border-[#E7E7E7] bg-white/88 p-5 shadow-xl shadow-black/10 backdrop-blur z-10">
     <span className="block text-xs font-bold uppercase tracking-[0.18em] text-red-500">Operations</span>
     <strong className="mt-2 block font-[Manrope] text-xl">Bulk industrial supply</strong>
     <p className="mt-2 text-sm text-[#666666]">Dependable sourcing for busy facilities.</p>
   </article>
-  <div className="float-card-d relative z-30 rounded-[2.2rem] border-2 border-red-500/20 bg-white px-8 py-7 text-center shadow-2xl shadow-red-500/10">
+  <div className="float-card-d relative z-40 rounded-[2.2rem] border-2 border-red-500/20 bg-white px-8 py-7 text-center shadow-2xl shadow-red-500/10">
     <span className="text-xs font-bold uppercase tracking-[0.18em] text-red-500">Annapoorna</span>
     <strong className="mt-2 block font-[Manrope] text-2xl">Products + Services</strong>
     <span className="mt-1 block text-sm text-[#666666]">One dependable partner</span>
   </div>
 </div>
-              <div className="absolute left-6 bottom-6 z-10 bg-white border border-[#E7E7E7] rounded-2xl shadow-xl px-5 py-4 min-w-[210px]">
-                <strong className="block font-[Manrope]">Products + Services</strong>
-                <span className="text-sm text-[#666666]">One dependable partner</span>
-              </div>
+
             </div>
           </div>
         </section>
