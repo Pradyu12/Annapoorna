@@ -37,13 +37,46 @@ const industries = [
   { title: 'Educational and institutional facilities', image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=600&q=80' },
 ];
 
+const heroCards = [
+  {
+    id: 'hygiene',
+    category: 'Hygiene',
+    title: 'Everyday workplace supplies',
+    image: 'https://images.unsplash.com/photo-1755752919883-e5d0912e2321?auto=format&fit=crop&w=900&q=80',
+  },
+  {
+    id: 'facility',
+    category: 'Facility care',
+    title: 'Maintenance and housekeeping',
+    image: 'https://images.unsplash.com/photo-1421940943431-d392fcc1079f?auto=format&fit=crop&w=900&q=80',
+  },
+  {
+    id: 'operations',
+    category: 'Operations',
+    title: 'Industrial and packaging supply',
+    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=80',
+  },
+];
+
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [heroCardIndex, setHeroCardIndex] = useState(0);
   const enableImmersiveCanvas =
     typeof window !== 'undefined' &&
     !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
     window.innerWidth >= 768;
+
+  useEffect(() => {
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+    const timer = window.setInterval(() => {
+      setHeroCardIndex((current) => (current + 1) % heroCards.length);
+    }, 3400);
+    return () => window.clearInterval(timer);
+  }, []);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     window.addEventListener('scroll', onScroll);
@@ -109,25 +142,31 @@ export default function App() {
     </Suspense>
   )}
   <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#F7F7F7] via-white/72 to-[#F2D3D6]/30 border border-[#E7E7E7] shadow-2xl shadow-black/10 backdrop-blur-[2px]" />
-  <article className="float-card-a absolute left-4 top-6 w-48 rounded-3xl border border-[#E7E7E7] bg-white/78 p-5 shadow-xl shadow-black/10 backdrop-blur z-0 opacity-75">
-    <span className="block text-xs font-bold uppercase tracking-[0.18em] text-red-500">Hygiene</span>
-    <strong className="mt-2 block font-[Manrope] text-xl">Everyday workplace supplies</strong>
-    <p className="mt-2 text-sm text-[#666666]">Reliable consumables for clean, healthy spaces.</p>
-  </article>
-  <article className="float-card-b absolute bottom-4 right-[-1rem] w-40 scale-75 rounded-3xl border border-[#E7E7E7] bg-white/70 p-3 shadow-xl shadow-black/10 backdrop-blur z-0 opacity-55">
-    <span className="block text-xs font-bold uppercase tracking-[0.18em] text-red-500">Facility care</span>
-    <strong className="mt-2 block font-[Manrope] text-xl">Maintenance services</strong>
-    <p className="mt-2 text-sm text-[#666666]">Housekeeping, cleaning, and upkeep support.</p>
-  </article>
-  <article className="float-card-c absolute bottom-4 left-8 w-48 rounded-3xl border border-[#E7E7E7] bg-white/78 p-5 shadow-xl shadow-black/10 backdrop-blur z-0 opacity-75">
-    <span className="block text-xs font-bold uppercase tracking-[0.18em] text-red-500">Operations</span>
-    <strong className="mt-2 block font-[Manrope] text-xl">Bulk industrial supply</strong>
-    <p className="mt-2 text-sm text-[#666666]">Dependable sourcing for busy facilities.</p>
-  </article>
-  <div className="float-card-d relative z-40 rounded-[2.2rem] border-2 border-red-500/20 bg-white px-8 py-7 text-center shadow-2xl shadow-red-500/10">
-    <span className="text-xs font-bold uppercase tracking-[0.18em] text-red-500">Annapoorna</span>
-    <strong className="mt-2 block font-[Manrope] text-2xl">Products + Services</strong>
-    <span className="mt-1 block text-sm text-[#666666]">One dependable partner</span>
+  <div className="relative z-30 h-[300px] w-full max-w-[340px] overflow-hidden rounded-[2.2rem] border-2 border-red-500/30 bg-white/95 p-4 shadow-2xl shadow-red-500/10 backdrop-blur">
+    <div className="absolute inset-x-0 top-0 h-1 bg-red-500/20" />
+    <div className="relative h-[208px] overflow-hidden rounded-[1.55rem] bg-[#F7F7F7]">
+      {heroCards.map((card, index) => (
+        <img
+          key={card.id}
+          src={card.image}
+          alt={card.title}
+          className={[
+            'absolute inset-0 h-full w-full object-cover transition-all duration-700 ease-[cubic-bezier(0.2,0.6,0.3,1)]',
+            index === heroCardIndex ? 'opacity-100 scale-100 rotate-0' : 'pointer-events-none opacity-0 scale-110 rotate-3',
+          ].join(' ')}
+        />
+      ))}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/38 via-transparent to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 p-4 text-white">
+        <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/85">{heroCards[heroCardIndex].category}</p>
+        <strong className="mt-1 block font-[Manrope] text-xl">{heroCards[heroCardIndex].title}</strong>
+      </div>
+    </div>
+    <div className="mt-4 text-center">
+      <span className="text-xs font-bold uppercase tracking-[0.18em] text-red-500">Annapoorna</span>
+      <strong className="mt-1 block font-[Manrope] text-xl">Products + Services</strong>
+      <span className="mt-1 block text-sm text-[#666666]">One dependable partner</span>
+    </div>
   </div>
 </div>
 
