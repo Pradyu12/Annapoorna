@@ -1,0 +1,26 @@
+# dependencies
+node_modules/
+app/node_modules/
+webgl-site/node_modules/
+
+# build output
+app/dist/
+dist/
+
+# logs
+*.log
+npm-debug.log*
+
+# environment
+.env
+.env.*
+
+# temporary files
+*.tmp
+*.bak
+*.msi
+
+# OS generated
+.DS_Store
+Thumbs.db
+Desktop.ini
