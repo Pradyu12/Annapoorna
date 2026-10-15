@@ -25,6 +25,11 @@
 | `Permissions-Policy` | **Added** | `camera=(), microphone=(), geolocation=()` |
 | `Strict-Transport-Security` | N/A | Enforced by GitHub Pages |
 | `X-XSS-Protection` | N/A | Deprecated; CSP covers this |
+| `Cross-Origin-Opener-Policy` | **Added** | `same-origin` |
+| `Cross-Origin-Resource-Policy` | **Added** | `same-origin` |
+| `require-trusted-types-for` | **Added** | `script` directive |
+| Cache-Control (assets) | **Added** | `public, max-age=31536000, immutable` |
+| Cache-Control (HTML) | **Added** | `public, max-age=0, must-revalidate` |
 
 **File:** `app/public/_headers`
 
