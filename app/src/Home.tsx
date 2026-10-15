@@ -123,7 +123,7 @@ export default function App() {
     <strong className="mt-2 block font-[Manrope] text-xl">Bulk industrial supply</strong>
     <p className="mt-2 text-sm text-[#666666]">Dependable sourcing for busy facilities.</p>
   </article>
-  <div className="relative z-10 rounded-[2.2rem] border-2 border-red-500/20 bg-white px-8 py-7 text-center shadow-2xl shadow-red-500/10">
+  <div className="float-card-d relative z-10 rounded-[2.2rem] border-2 border-red-500/20 bg-white px-8 py-7 text-center shadow-2xl shadow-red-500/10">
     <span className="text-xs font-bold uppercase tracking-[0.18em] text-red-500">Annapoorna</span>
     <strong className="mt-2 block font-[Manrope] text-2xl">Products + Services</strong>
     <span className="mt-1 block text-sm text-[#666666]">One dependable partner</span>

@@ -6,7 +6,9 @@ const nav = ['Home','About','Products','Services','Industries','Contact'];
 export default function Layout() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const location = useLocation();
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     window.addEventListener('scroll', onScroll);
@@ -14,8 +16,41 @@ export default function Layout() {
     return () => window.removeEventListener('scroll', onScroll);
   }, [location]);
 
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location]);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setMenuOpen(false);
+    };
+    window.addEventListener('keydown', closeOnEscape);
+    return () => window.removeEventListener('keydown', closeOnEscape);
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const updateProgress = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(max > 0 ? window.scrollY / max : 0);
+    };
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+    return () => window.removeEventListener('scroll', updateProgress);
+  }, [location]);
+
   return (
     <div className="min-h-screen bg-white text-[#171717]">
+      <div className="pointer-events-none fixed inset-x-0 top-0 z-[70] h-1 bg-red-500/15">
+        <div className="h-full bg-red-500 transition-[width] duration-150 ease-out" style={{ width: `${scrollProgress * 100}%` }} />
+      </div>
       <header className={`sticky top-0 z-50 backdrop-blur bg-white/85 border-b border-[#E7E7E7] transition-shadow ${scrolled ? 'shadow-lg shadow-black/5' : ''}`}>
         <div className="mx-auto max-w-7xl px-6 min-h-[92px] flex items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-3 font-[Manrope] font-extrabold text-2xl">
@@ -43,8 +78,9 @@ export default function Layout() {
             </Link>
           </nav>
       </div>
-      <Outlet />
-      <footer className="bg-[#171717] text-white/80 mt-20">
+      <div key={location.pathname} className="animate-route-enter">
+        <Outlet />
+      </div>      <footer className="bg-[#171717] text-white/80 mt-20">
         <div className="mx-auto max-w-7xl px-6 py-16">
           <div className="h-[3px] rounded-full bg-gradient-to-r from-red-500 to-red-700 mb-10" />
           <div className="grid md:grid-cols-4 gap-10 pb-10 border-b border-white/10">
