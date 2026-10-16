@@ -1,4 +1,4 @@
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import { useEffect, useMemo, useRef } from 'react';
 import * as THREE from 'three';
@@ -6,6 +6,7 @@ import warehouseUrl from './assets/warehouse.glb?url';
 
 function Warehouse() {
   const group = useRef<THREE.Group>(null);
+  const { camera } = useThree();
   const { scene, animations } = useGLTF(warehouseUrl);
   const activeMixer = useRef<THREE.AnimationMixer | null>(null);
 
@@ -16,7 +17,7 @@ function Warehouse() {
     box.getSize(size);
     const center = new THREE.Vector3();
     box.getCenter(center);
-    const scale = 2.15 / Math.max(size.x, size.y, size.z, 0.001);
+    const scale = 1.9 / Math.max(size.x, size.y, size.z, 0.001);
     clone.scale.setScalar(scale);
     clone.position.set(-center.x * scale, -center.y * scale, -center.z * scale);
     clone.traverse((child) => {
@@ -29,8 +30,13 @@ function Warehouse() {
   }, [scene, animations]);
 
   useEffect(() => {
-    if (!normalized.hasAnimation) return;
-    const mixer = new THREE.AnimationMixer(normalized.clone);
+    camera.position.set(0, 1.2, 4.35);
+    camera.lookAt(0, 0, 0);
+    camera.updateProjectionMatrix();
+  }, [camera]);
+
+  useEffect(() => {
+    if (!normalized.hasAnimation) return;    const mixer = new THREE.AnimationMixer(normalized.clone);
     animations.forEach((clip) => {
       const action = mixer.clipAction(clip);
       action.setLoop(THREE.LoopOnce, 1);
@@ -54,7 +60,7 @@ function Warehouse() {
 export default function WarehouseModel() {
   return (
     <div className="relative h-[420px] w-full overflow-hidden rounded-3xl border border-[#E7E7E7] bg-gradient-to-br from-[#F7F7F7] via-white to-[#F2D3D6]/40 shadow-2xl shadow-black/10">
-      <Canvas camera={{ position: [0, 1.35, 4], fov: 38 }} dpr={[1, 1.5]} gl={{ antialias: true, alpha: true }}>
+      <Canvas camera={{ position: [0, 1.2, 4.3], fov: 34 }} dpr={[1, 1.5]} gl={{ antialias: true, alpha: true }}>
         <ambientLight intensity={0.75} />
         <directionalLight position={[4, 6, 2]} intensity={1.1} />
         <pointLight position={[-3, 2, 2]} color="#D71920" intensity={0.35} />
