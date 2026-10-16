@@ -42,13 +42,9 @@ function Warehouse() {
   useFrame((state, delta) => {
     if (activeMixer.current) activeMixer.current.update(delta);
     if (!group.current) return;
-    const prefersReducedMotion =
-      typeof window !== 'undefined' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!prefersReducedMotion) {
-      group.current.rotation.y = (group.current.rotation.y + delta * 0.05) % (Math.PI * 2);
-    }
-    group.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.15) * 0.02;
+    const targetRotationY = Math.PI + state.pointer.x * 0.12;
+    group.current.rotation.y = THREE.MathUtils.lerp(group.current.rotation.y, targetRotationY, 0.05);
+    group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, Math.sin(state.clock.elapsedTime * 0.12) * 0.015, 0.05);
     group.current.position.x = THREE.MathUtils.lerp(group.current.position.x, state.pointer.x * 0.08, 0.03);
     group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, state.pointer.y * 0.05, 0.03);
   });
