@@ -48,7 +48,7 @@ function Conveyor() {
     if (activeMixer.current) activeMixer.current.update(1 / 60);
   });
 
-  return <primitive object={normalized.clone} ref={group} />;
+  return <primitive object={normalized.clone} ref={(node: any) => { group.current = node as THREE.Group; if (node) { node.rotation.y = Math.PI / 2; } }} />;
 }
 
 export default function ConveyorModel() {
