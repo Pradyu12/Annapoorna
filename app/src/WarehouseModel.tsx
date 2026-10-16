@@ -30,8 +30,8 @@ function Warehouse() {
   }, [scene, animations]);
 
   useEffect(() => {
-    camera.position.set(0, 0.5, 4.5);
-    camera.lookAt(0, -0.12, 0);
+    camera.position.set(0.3, 0.55, 4.35);
+    camera.lookAt(0.15, -0.1, 0);
     camera.updateProjectionMatrix();
   }, [camera]);
 
@@ -54,7 +54,7 @@ function Warehouse() {
     if (activeMixer.current) activeMixer.current.update(delta);
   });
 
-  return <primitive object={normalized.clone} ref={(node: any) => { group.current = node as THREE.Group; if (node) { node.rotation.y = Math.PI; node.rotation.x = 0; node.position.set(0, -0.25, 0); } }} />;
+  return <primitive object={normalized.clone} ref={(node: any) => { group.current = node as THREE.Group; if (node) { node.rotation.y = Math.PI + Math.PI / 2; node.rotation.x = 0; node.position.set(0, -0.25, 0); } }} />;
 }
 
 export default function WarehouseModel() {
