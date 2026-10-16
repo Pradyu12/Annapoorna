@@ -31,7 +31,12 @@ function Warehouse() {
   useEffect(() => {
     if (!normalized.hasAnimation) return;
     const mixer = new THREE.AnimationMixer(normalized.clone);
-    animations.forEach((clip) => mixer.clipAction(clip).play());
+    animations.forEach((clip) => {
+      const action = mixer.clipAction(clip);
+      action.setLoop(THREE.LoopOnce, 1);
+      action.clampWhenFinished = true;
+      action.play();
+    });
     activeMixer.current = mixer;
     return () => {
       mixer.stopAllAction();
@@ -39,17 +44,17 @@ function Warehouse() {
     };
   }, [animations, normalized]);
 
-  useFrame((state, delta) => {
+  useFrame((_state, delta) => {
     if (activeMixer.current) activeMixer.current.update(delta);
     if (!group.current) return;
-    const targetRotationY = Math.PI + state.pointer.x * 0.12;
-    group.current.rotation.y = THREE.MathUtils.lerp(group.current.rotation.y, targetRotationY, 0.05);
-    group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, Math.sin(state.clock.elapsedTime * 0.12) * 0.015, 0.05);
-    group.current.position.x = THREE.MathUtils.lerp(group.current.position.x, state.pointer.x * 0.08, 0.03);
-    group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, state.pointer.y * 0.05, 0.03);
+    const targetRotationY = Math.PI + (_state.pointer.x * 0.08);
+    group.current.rotation.y = THREE.MathUtils.lerp(group.current.rotation.y, targetRotationY, 0.08);
+    group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, 0, 0.08);
+    group.current.position.x = THREE.MathUtils.lerp(group.current.position.x, _state.pointer.x * 0.05, 0.03);
+    group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, _state.pointer.y * 0.03, 0.03);
   });
 
-  return <primitive object={normalized.clone} ref={group} />;
+  return <primitive object={normalized.clone} ref={(node: any) => { group.current = node as THREE.Group; if (node) node.rotation.y = Math.PI; }} />;
 }
 
 export default function WarehouseModel() {
