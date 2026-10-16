@@ -54,8 +54,7 @@ function Conveyor() {
 export default function ConveyorModel() {
   return (
     <div className="relative h-[420px] w-full overflow-hidden rounded-3xl border border-[#E7E7E7] bg-gradient-to-br from-[#F7F7F7] via-white to-[#F2D3D6]/40 shadow-2xl shadow-black/10">
-      <Canvas camera={{ position: [0, 1.4, 4.3], fov: 34 }} dpr={[1, 1.5]} gl={{ antialias: true, alpha: true }}>
-        <ambientLight intensity={0.8} />
+      <Canvas camera={{ position: [-0.3, 1.4, 4.3], fov: 34 }} dpr={[1, 1.5]} gl={{ antialias: true, alpha: true }}>        <ambientLight intensity={0.8} />
         <directionalLight position={[4, 6, 2]} intensity={1.1} />
         <pointLight position={[-3, 2, 2]} color="#D71920" intensity={0.35} />
         <Conveyor />
