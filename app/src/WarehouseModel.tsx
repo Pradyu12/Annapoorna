@@ -17,7 +17,7 @@ function Warehouse() {
     box.getSize(size);
     const center = new THREE.Vector3();
     box.getCenter(center);
-    const scale = 1.9 / Math.max(size.x, size.y, size.z, 0.001);
+    const scale = 1.6 / Math.max(size.x, size.y, size.z, 0.001);
     clone.scale.setScalar(scale);
     clone.position.set(-center.x * scale, -center.y * scale, -center.z * scale);
     clone.traverse((child) => {
@@ -30,7 +30,7 @@ function Warehouse() {
   }, [scene, animations]);
 
   useEffect(() => {
-    camera.position.set(0, 0.5, 4.5);
+    camera.position.set(-0.15, 0.5, 4.1);
     camera.lookAt(0, 0, 0);
     camera.updateProjectionMatrix();
   }, [camera]);
