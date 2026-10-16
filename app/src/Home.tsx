@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import './index.css';
 
-const WarehouseModel = lazy(() => import('./WarehouseModel'));
+const ConveyorModel = lazy(() => import('./ConveyorModel'));
 
 const capabilities = [
   ['Hygiene & Cleaning', 'Everyday workplace hygiene consumables.'],
@@ -100,8 +100,7 @@ export default function App() {
               <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80" alt="" className="mt-6 h-[300px] w-full rounded-3xl border border-[#E7E7E7] object-cover shadow-xl shadow-black/10 md:hidden" />
             <div className="relative hidden h-[480px] items-center justify-center [perspective:1200px] md:flex">
               <Suspense fallback={null}>
-                <WarehouseModel />
-              </Suspense>
+                <ConveyorModel />              </Suspense>
             </div>
       </div>
       </div>
