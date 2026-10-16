@@ -30,8 +30,8 @@ function Warehouse() {
   }, [scene, animations]);
 
   useEffect(() => {
-    camera.position.set(0.2, 0.5, 4.1);
-    camera.lookAt(0.2, -0.1, 0);
+    camera.position.set(0.2, 2.0, 3.8);
+    camera.lookAt(0.2, 0, 0);
     camera.updateProjectionMatrix();
   }, [camera]);
 
@@ -60,7 +60,7 @@ function Warehouse() {
 export default function WarehouseModel() {
   return (
     <div className="relative h-[420px] w-full overflow-hidden rounded-3xl border border-[#E7E7E7] bg-gradient-to-br from-[#F7F7F7] via-white to-[#F2D3D6]/40 shadow-2xl shadow-black/10">
-      <Canvas camera={{ position: [0.2, 0.5, 4.1], fov: 34 }} dpr={[1, 1.5]} gl={{ antialias: true, alpha: true }}>
+      <Canvas camera={{ position: [0.2, 2.0, 3.8], fov: 36 }} dpr={[1, 1.5]} gl={{ antialias: true, alpha: true }}>
         <ambientLight intensity={0.75} />
         <directionalLight position={[4, 6, 2]} intensity={1.1} />
         <pointLight position={[-3, 2, 2]} color="#D71920" intensity={0.35} />
