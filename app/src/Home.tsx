@@ -40,10 +40,6 @@ const industries = [
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const enableImmersiveCanvas =
-    typeof window !== 'undefined' &&
-    !window.matchMedia('(prefers-reduced-motion: reduce)').matches &&
-    window.innerWidth >= 768;
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     window.addEventListener('scroll', onScroll);
@@ -103,29 +99,10 @@ export default function App() {
             <div className="relative">
               <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80" alt="" className="mt-6 h-[300px] w-full rounded-3xl border border-[#E7E7E7] object-cover shadow-xl shadow-black/10 md:hidden" />
             <div className="relative hidden h-[480px] items-center justify-center [perspective:1200px] md:flex">
-  {enableImmersiveCanvas && (
-    <Suspense fallback={null}>
-      <WarehouseModel />
-    </Suspense>
-  )}
-  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#F7F7F7] via-white/72 to-[#F2D3D6]/30 border border-[#E7E7E7] shadow-2xl shadow-black/10 backdrop-blur-[2px]" />
-  <div className="relative z-30 h-[300px] w-full max-w-[340px] overflow-hidden rounded-[2.2rem] border-2 border-red-500/30 bg-white/95 p-4 shadow-2xl shadow-red-500/10 backdrop-blur">
-    <div className="absolute inset-x-0 top-0 h-1 bg-red-500/20" />
-    <div className="relative h-[208px] overflow-hidden rounded-[1.55rem] bg-[#F7F7F7]">
-      <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80" alt="" className="absolute inset-0 h-full w-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/38 via-transparent to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 p-4 text-white">
-        <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/85">Warehouse view</p>
-        <strong className="mt-1 block font-[Manrope] text-xl">Annapoorna supply workspace</strong>
-      </div>
-    </div>
-    <div className="mt-4 text-center">
-      <span className="text-xs font-bold uppercase tracking-[0.18em] text-red-500">Annapoorna</span>
-      <strong className="mt-1 block font-[Manrope] text-xl">Products + Services</strong>
-      <span className="mt-1 block text-sm text-[#666666]">One dependable partner</span>
-    </div>
-  </div>
-</div>
+              <Suspense fallback={null}>
+                <WarehouseModel />
+              </Suspense>
+            </div>
       </div>
       </div>
         </section>

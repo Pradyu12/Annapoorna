@@ -42,10 +42,15 @@ function Warehouse() {
   useFrame((state, delta) => {
     if (activeMixer.current) activeMixer.current.update(delta);
     if (!group.current) return;
-    group.current.rotation.y = (group.current.rotation.y + delta * 0.2) % (Math.PI * 2);
-    group.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.35) * 0.05;
-    group.current.position.x = THREE.MathUtils.lerp(group.current.position.x, state.pointer.x * 0.18, 0.04);
-    group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, state.pointer.y * 0.12, 0.04);
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!prefersReducedMotion) {
+      group.current.rotation.y = (group.current.rotation.y + delta * 0.05) % (Math.PI * 2);
+    }
+    group.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.15) * 0.02;
+    group.current.position.x = THREE.MathUtils.lerp(group.current.position.x, state.pointer.x * 0.08, 0.03);
+    group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, state.pointer.y * 0.05, 0.03);
   });
 
   return <primitive object={normalized.clone} ref={group} />;
@@ -60,10 +65,6 @@ export default function WarehouseModel() {
         <pointLight position={[-3, 2, 2]} color="#D71920" intensity={0.35} />
         <Warehouse />
       </Canvas>
-      <div className="pointer-events-none absolute bottom-5 left-5 rounded-2xl bg-white/90 px-4 py-3 shadow-lg backdrop-blur">
-        <span className="block text-xs font-bold uppercase tracking-[0.18em] text-red-500">Annapoorna</span>
-        <strong className="mt-1 block font-[Manrope] text-xl">Warehouse workspace</strong>
-      </div>
     </div>
   );
 }
