@@ -1,7 +1,6 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import './index.css';
-
-const ConveyorModel = lazy(() => import('./ConveyorModel'));
+import HeroShowcase from './HeroShowcase';
 
 const capabilities = [
   ['Hygiene & Cleaning', 'Everyday workplace hygiene consumables.'],
@@ -55,16 +54,16 @@ export default function App() {
             <img src="./logo.png" alt="Annapoorna" className="h-12 w-12 rounded-xl object-cover" />
             Annapoorna
           </a>
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1">
             {['Home','About','Products','Services','Industries','Contact'].map((item, i) => (
               <a key={item} href={`#${i === 0 ? 'top' : item.toLowerCase()}`} className="px-4 py-2 rounded-full font-semibold text-sm hover:bg-[#F7F7F7] hover:text-red-500 transition-colors">{item}</a>
             ))}
             <a href="#quote" className="ml-2 px-5 py-3 rounded-full bg-red-500 text-white font-bold text-sm hover:bg-red-700 transition-colors">Request a Quote</a>
           </nav>
-          <button className="md:hidden h-11 w-11 rounded-xl border border-[#E7E7E7]" onClick={() => setMenuOpen((value) => !value)} aria-expanded={menuOpen} aria-label="Toggle navigation">{menuOpen ? '✕' : '☰'}</button>
+          <button className="lg:hidden h-11 w-11 rounded-xl border border-[#E7E7E7]" onClick={() => setMenuOpen((value) => !value)} aria-expanded={menuOpen} aria-label="Toggle navigation">{menuOpen ? '✕' : '☰'}</button>
         </div>
       </header>
-      <div className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${menuOpen ? 'max-h-[560px] border-y border-[#E7E7E7] bg-white px-6 py-4 opacity-100' : 'max-h-0 border-transparent opacity-0'}`} aria-hidden={!menuOpen}>
+      <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-out ${menuOpen ? 'max-h-[560px] border-y border-[#E7E7E7] bg-white px-6 py-4 opacity-100' : 'max-h-0 border-transparent opacity-0'}`} aria-hidden={!menuOpen}>
           <nav className="flex flex-col gap-2" aria-label="Mobile navigation">
             {['Home','About','Products','Services','Industries','Contact'].map((item, i) => (
               <a key={item} href={`#${i === 0 ? 'top' : item.toLowerCase()}`} onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1} className="rounded-xl px-4 py-3 font-semibold hover:bg-[#F7F7F7] hover:text-red-500 transition-colors">
@@ -97,12 +96,8 @@ export default function App() {
               <p className="text-sm text-[#666666]">Serving businesses and institutions with dependable supply solutions.</p>
             </div>
             <div className="relative">
-              <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80" alt="" className="mt-6 h-[300px] w-full rounded-3xl border border-[#E7E7E7] object-cover shadow-xl shadow-black/10 md:hidden" />
-            <div className="relative hidden h-[480px] items-center justify-center [perspective:1200px] md:flex">
-              <Suspense fallback={null}>
-                <ConveyorModel />              </Suspense>
+              <HeroShowcase />
             </div>
-      </div>
       </div>
         </section>
 

@@ -57,16 +57,16 @@ export default function Layout() {
             <img src="./logo.png" alt="Annapoorna" className="h-12 w-12 rounded-xl object-cover" />
             Annapoorna
           </Link>
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1">
             {nav.map((item) => (
               <Link key={item} to={item === 'Home' ? '/' : `/${item.toLowerCase()}`} className="px-4 py-2 rounded-full font-semibold text-sm hover:bg-[#F7F7F7] hover:text-red-500 transition-colors">{item}</Link>
             ))}
             <Link to="/quote" className="ml-2 px-5 py-3 rounded-full bg-red-500 text-white font-bold text-sm hover:bg-red-700 transition-colors">Request a Quote</Link>
           </nav>
-          <button className="md:hidden h-11 w-11 rounded-xl border border-[#E7E7E7]" onClick={() => setMenuOpen((value) => !value)} aria-expanded={menuOpen} aria-label="Toggle navigation">{menuOpen ? '✕' : '☰'}</button>
+          <button className="lg:hidden h-11 w-11 rounded-xl border border-[#E7E7E7]" onClick={() => setMenuOpen((value) => !value)} aria-expanded={menuOpen} aria-label="Toggle navigation">{menuOpen ? '✕' : '☰'}</button>
         </div>
       </header>
-      <div className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${menuOpen ? 'max-h-[560px] border-y border-[#E7E7E7] bg-white px-6 py-4 opacity-100' : 'max-h-0 border-transparent opacity-0'}`} aria-hidden={!menuOpen}>
+      <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-out ${menuOpen ? 'max-h-[560px] border-y border-[#E7E7E7] bg-white px-6 py-4 opacity-100' : 'max-h-0 border-transparent opacity-0'}`} aria-hidden={!menuOpen}>
           <nav className="flex flex-col gap-2" aria-label="Mobile navigation">
             {['Home','About','Products','Services','Industries','Contact'].map((item) => (
               <Link key={item} to={item === 'Home' ? '/' : `/${item.toLowerCase()}`} onClick={() => setMenuOpen(false)} tabIndex={menuOpen ? 0 : -1} className="rounded-xl px-4 py-3 font-semibold hover:bg-[#F7F7F7] hover:text-red-500 transition-colors">
