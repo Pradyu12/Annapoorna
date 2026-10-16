@@ -1,7 +1,7 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import './index.css';
 
-const ImmersiveCanvas = lazy(() => import('./ImmersiveCanvas'));
+const WarehouseModel = lazy(() => import('./WarehouseModel'));
 
 const capabilities = [
   ['Hygiene & Cleaning', 'Everyday workplace hygiene consumables.'],
@@ -105,33 +105,29 @@ export default function App() {
             <div className="relative hidden h-[480px] items-center justify-center [perspective:1200px] md:flex">
   {enableImmersiveCanvas && (
     <Suspense fallback={null}>
-      <ImmersiveCanvas />
+      <WarehouseModel />
     </Suspense>
   )}
   <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#F7F7F7] via-white/72 to-[#F2D3D6]/30 border border-[#E7E7E7] shadow-2xl shadow-black/10 backdrop-blur-[2px]" />
-  <article className="float-card-a absolute left-2 top-2 w-44 rounded-3xl border border-[#E7E7E7] bg-white/80 p-4 shadow-xl shadow-black/10 backdrop-blur z-0 opacity-45 pointer-events-none scale-[0.82]">
-    <span className="block text-xs font-bold uppercase tracking-[0.18em] text-red-500">Hygiene</span>
-    <strong className="mt-2 block font-[Manrope] text-xl">Everyday workplace supplies</strong>
-    <p className="mt-2 text-sm text-[#666666]">Reliable consumables for clean, healthy spaces.</p>
-  </article>
-  <article className="float-card-b absolute bottom-2 right-2 w-44 rounded-3xl border border-[#E7E7E7] bg-white/80 p-4 shadow-xl shadow-black/10 backdrop-blur z-0 opacity-45 pointer-events-none scale-[0.82]">
-    <span className="block text-xs font-bold uppercase tracking-[0.18em] text-red-500">Facility care</span>
-    <strong className="mt-2 block font-[Manrope] text-xl">Maintenance services</strong>
-    <p className="mt-2 text-sm text-[#666666]">Housekeeping, cleaning, and upkeep support.</p>
-  </article>
-  <article className="float-card-c absolute bottom-2 left-[38%] w-44 rounded-3xl border border-[#E7E7E7] bg-white/80 p-4 shadow-xl shadow-black/10 backdrop-blur z-0 opacity-45 pointer-events-none scale-[0.82]">
-    <span className="block text-xs font-bold uppercase tracking-[0.18em] text-red-500">Operations</span>
-    <strong className="mt-2 block font-[Manrope] text-xl">Industrial and packaging supply</strong>
-    <p className="mt-2 text-sm text-[#666666]">Dependable sourcing for busy facilities.</p>
-  </article>
-  <div className="float-card-d relative z-20 rounded-[2.2rem] border-2 border-red-500/20 bg-white px-8 py-7 text-center shadow-2xl shadow-red-500/10">
-    <span className="text-xs font-bold uppercase tracking-[0.18em] text-red-500">Annapoorna</span>
-    <strong className="mt-2 block font-[Manrope] text-2xl">Products + Services</strong>
-    <span className="mt-1 block text-sm text-[#666666]">One dependable partner</span>
+  <div className="relative z-30 h-[300px] w-full max-w-[340px] overflow-hidden rounded-[2.2rem] border-2 border-red-500/30 bg-white/95 p-4 shadow-2xl shadow-red-500/10 backdrop-blur">
+    <div className="absolute inset-x-0 top-0 h-1 bg-red-500/20" />
+    <div className="relative h-[208px] overflow-hidden rounded-[1.55rem] bg-[#F7F7F7]">
+      <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80" alt="" className="absolute inset-0 h-full w-full object-cover" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/38 via-transparent to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 p-4 text-white">
+        <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/85">Warehouse view</p>
+        <strong className="mt-1 block font-[Manrope] text-xl">Annapoorna supply workspace</strong>
+      </div>
+    </div>
+    <div className="mt-4 text-center">
+      <span className="text-xs font-bold uppercase tracking-[0.18em] text-red-500">Annapoorna</span>
+      <strong className="mt-1 block font-[Manrope] text-xl">Products + Services</strong>
+      <span className="mt-1 block text-sm text-[#666666]">One dependable partner</span>
+    </div>
   </div>
 </div>
-</div>
-</div>
+      </div>
+      </div>
         </section>
 
         <section className="border-y border-[#E7E7E7] bg-[#F7F7F7]">
