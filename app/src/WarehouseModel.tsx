@@ -30,8 +30,8 @@ function Warehouse() {
   }, [scene, animations]);
 
   useEffect(() => {
-    camera.position.set(0, 0.55, 4.45);
-    camera.lookAt(0, -0.1, 0);
+    camera.position.set(0.18, 0.55, 4.45);
+    camera.lookAt(0.18, -0.1, 0);
     camera.updateProjectionMatrix();
   }, [camera]);
 
@@ -54,13 +54,13 @@ function Warehouse() {
     if (activeMixer.current) activeMixer.current.update(delta);
   });
 
-  return <primitive object={normalized.clone} ref={(node: any) => { group.current = node as THREE.Group; if (node) { node.rotation.y = Math.PI; node.rotation.x = 0; node.position.y = -0.12; } }} />;
+  return <primitive object={normalized.clone} ref={(node: any) => { group.current = node as THREE.Group; if (node) { node.rotation.y = Math.PI - 0.18; node.rotation.x = 0; node.position.set(0.15, -0.12, 0); } }} />;
 }
 
 export default function WarehouseModel() {
   return (
     <div className="relative h-[420px] w-full overflow-hidden rounded-3xl border border-[#E7E7E7] bg-gradient-to-br from-[#F7F7F7] via-white to-[#F2D3D6]/40 shadow-2xl shadow-black/10">
-      <Canvas camera={{ position: [0, 1.2, 4.3], fov: 34 }} dpr={[1, 1.5]} gl={{ antialias: true, alpha: true }}>
+      <Canvas camera={{ position: [0, 0.55, 4.45], fov: 34 }} dpr={[1, 1.5]} gl={{ antialias: true, alpha: true }}>
         <ambientLight intensity={0.75} />
         <directionalLight position={[4, 6, 2]} intensity={1.1} />
         <pointLight position={[-3, 2, 2]} color="#D71920" intensity={0.35} />
