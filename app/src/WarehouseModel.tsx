@@ -46,15 +46,9 @@ function Warehouse() {
 
   useFrame((_state, delta) => {
     if (activeMixer.current) activeMixer.current.update(delta);
-    if (!group.current) return;
-    const targetRotationY = Math.PI + (_state.pointer.x * 0.08);
-    group.current.rotation.y = THREE.MathUtils.lerp(group.current.rotation.y, targetRotationY, 0.08);
-    group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, 0, 0.08);
-    group.current.position.x = THREE.MathUtils.lerp(group.current.position.x, _state.pointer.x * 0.05, 0.03);
-    group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, _state.pointer.y * 0.03, 0.03);
   });
 
-  return <primitive object={normalized.clone} ref={(node: any) => { group.current = node as THREE.Group; if (node) node.rotation.y = Math.PI; }} />;
+  return <primitive object={normalized.clone} ref={(node: any) => { group.current = node as THREE.Group; if (node) { node.rotation.y = Math.PI; node.rotation.x = 0; } }} />;
 }
 
 export default function WarehouseModel() {
