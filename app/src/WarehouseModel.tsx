@@ -17,7 +17,7 @@ function Warehouse() {
     box.getSize(size);
     const center = new THREE.Vector3();
     box.getCenter(center);
-    const scale = 1.6 / Math.max(size.x, size.y, size.z, 0.001);
+    const scale = 1.65 / Math.max(size.x, size.y, size.z, 0.001);
     clone.scale.setScalar(scale);
     clone.position.set(-center.x * scale, -center.y * scale, -center.z * scale);
     clone.traverse((child) => {
