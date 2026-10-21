@@ -20,6 +20,16 @@ npm-debug.log*
 *.bak
 *.msi
 
+# local scratch / diagnostics
+_diag*
+_ac_content.txt
+_svc_content*.txt
+temp_output.txt
+
+# local installers and archives
+*.zip
+*.exe
+
 # OS generated
 .DS_Store
 Thumbs.db

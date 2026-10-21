@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import './index.css';
 import HeroShowcase from './HeroShowcase';
 
@@ -46,6 +46,24 @@ export default function App() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const handleQuoteSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const value = (key: string) => String(data.get(key) ?? '').trim();
+    const subject = `Quote request from ${value('company') || value('name') || 'website visitor'}`;
+    const body = [
+      `Name: ${value('name')}`,
+      `Company: ${value('company')}`,
+      `Email: ${value('email')}`,
+      `Phone: ${value('phone')}`,
+      `Category: ${value('category')}`,
+      '',
+      'Requirements:',
+      value('message'),
+    ].join('\n');
+    window.location.href = `mailto:sales@annapoornaentp.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
   return (
     <div className="min-h-screen bg-white text-[#171717]">
       <header className={`sticky top-0 z-50 backdrop-blur bg-white/85 border-b border-[#E7E7E7] transition-shadow ${scrolled ? 'shadow-lg shadow-black/5' : ''}`}>
@@ -83,7 +101,7 @@ export default function App() {
               <span className="inline-flex items-center gap-2 text-red-500 font-bold text-xs tracking-[0.18em] uppercase mb-5">
                 <span className="h-[2px] w-7 bg-red-500" />Your Trusted Business Supply Partner
               </span>
-              <h1 className="text-5xl md:text-7xl leading-[0.95] mb-5">
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl leading-[0.95] mb-5">
                 Everything Your Business Needs. <span className="text-red-500">One Reliable Partner.</span>
               </h1>
               <p className="text-[#666666] text-lg max-w-xl mb-8">
@@ -137,7 +155,7 @@ export default function App() {
                   </div>
                 ))}
               </div>
-              <a href="#about" className="inline-flex px-6 py-4 rounded-xl bg-red-500 text-white font-bold hover:bg-red-700 transition-colors">Discover Our Company</a>
+              <a href="#contact" className="inline-flex px-6 py-4 rounded-xl bg-red-500 text-white font-bold hover:bg-red-700 transition-colors">Get in Touch</a>
             </div>
           </div>
         </section>
@@ -152,7 +170,7 @@ export default function App() {
               {products.map((item, index) => (
                 <a
                   key={item.title}
-                  href="#products"
+                  href="#quote"
                   className="group relative block overflow-hidden rounded-3xl border border-[#E7E7E7] bg-white p-4 shadow-[0_18px_45px_-28px_rgba(23,23,23,0.25)] transition-all duration-300 hover:-translate-y-2 hover:border-red-500/30 hover:shadow-[0_28px_60px_-28px_rgba(215,25,32,0.35)]"
                 >
                   <span className="absolute right-4 top-4 z-10 rounded-full bg-white/90 px-3 py-1 text-xs font-extrabold text-red-500 shadow-sm backdrop-blur">
@@ -173,10 +191,9 @@ export default function App() {
                   </div>
                   <div className="px-1">
                     <h3 className="text-xl font-[Manrope] transition-colors duration-300 group-hover:text-red-500">{item.title}</h3>
-                    <p className="mt-2 text-sm text-[#666666]">Category overview without unverified product claims.</p>
                     <div className="mt-5 flex items-center justify-between">
                       <span className="inline-flex items-center gap-2 text-sm font-bold text-red-500">
-                        View category
+                        Request a quote
                         <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                       </span>
                       <span className="h-8 w-8 rounded-full border border-[#E7E7E7] text-[#666666] transition-all duration-300 group-hover:border-red-500 group-hover:bg-red-500 group-hover:text-white flex items-center justify-center">+</span>
@@ -278,13 +295,13 @@ export default function App() {
               <h2 className="text-4xl md:text-5xl mb-4">Looking for a Reliable Supply Partner?</h2>
               <p className="text-[#666666]">Tell us what your business needs. Our team can help you explore the right products and services.</p>
             </div>
-            <form className="max-w-4xl bg-white border border-[#E7E7E7] rounded-3xl p-8 grid md:grid-cols-2 gap-5">
-              <label className="flex flex-col gap-2"><span className="font-semibold text-sm">Full name</span><input className="px-4 py-3 rounded-xl border border-[#E7E7E7] focus:border-red-500 focus:outline-none" required /></label>
-              <label className="flex flex-col gap-2"><span className="font-semibold text-sm">Company name</span><input className="px-4 py-3 rounded-xl border border-[#E7E7E7] focus:border-red-500 focus:outline-none" required /></label>
-              <label className="flex flex-col gap-2"><span className="font-semibold text-sm">Business email</span><input className="px-4 py-3 rounded-xl border border-[#E7E7E7] focus:border-red-500 focus:outline-none" type="email" required /></label>
-              <label className="flex flex-col gap-2"><span className="font-semibold text-sm">Phone number</span><input className="px-4 py-3 rounded-xl border border-[#E7E7E7] focus:border-red-500 focus:outline-none" type="tel" required /></label>
+            <form onSubmit={handleQuoteSubmit} className="max-w-4xl bg-white border border-[#E7E7E7] rounded-3xl p-8 grid md:grid-cols-2 gap-5">
+              <label className="flex flex-col gap-2"><span className="font-semibold text-sm">Full name</span><input name="name" className="px-4 py-3 rounded-xl border border-[#E7E7E7] focus:border-red-500 focus:outline-none" required /></label>
+              <label className="flex flex-col gap-2"><span className="font-semibold text-sm">Company name</span><input name="company" className="px-4 py-3 rounded-xl border border-[#E7E7E7] focus:border-red-500 focus:outline-none" required /></label>
+              <label className="flex flex-col gap-2"><span className="font-semibold text-sm">Business email</span><input name="email" className="px-4 py-3 rounded-xl border border-[#E7E7E7] focus:border-red-500 focus:outline-none" type="email" required /></label>
+              <label className="flex flex-col gap-2"><span className="font-semibold text-sm">Phone number</span><input name="phone" className="px-4 py-3 rounded-xl border border-[#E7E7E7] focus:border-red-500 focus:outline-none" type="tel" required /></label>
               <label className="md:col-span-2 flex flex-col gap-2"><span className="font-semibold text-sm">Product / service category</span>
-                <select className="px-4 py-3 rounded-xl border border-[#E7E7E7] focus:border-red-500 focus:outline-none">
+                <select name="category" className="px-4 py-3 rounded-xl border border-[#E7E7E7] focus:border-red-500 focus:outline-none">
                   <option>Cleaning & Housekeeping</option>
                   <option>Health & Hygiene</option>
                   <option>Pantry Supplies</option>
@@ -292,9 +309,10 @@ export default function App() {
                   <option>Maintenance</option>
                 </select>
               </label>
-              <label className="md:col-span-2 flex flex-col gap-2"><span className="font-semibold text-sm">Message / requirements</span><textarea className="px-4 py-3 rounded-xl border border-[#E7E7E7] focus:border-red-500 focus:outline-none min-h-32" /></label>
+              <label className="md:col-span-2 flex flex-col gap-2"><span className="font-semibold text-sm">Message / requirements</span><textarea name="message" className="px-4 py-3 rounded-xl border border-[#E7E7E7] focus:border-red-500 focus:outline-none min-h-32" /></label>
               <div className="md:col-span-2">
                 <button className="px-6 py-4 rounded-xl bg-red-500 text-white font-bold hover:bg-red-700 transition-colors" type="submit">Submit Enquiry</button>
+                <p className="mt-3 text-xs text-[#666666]">Submitting opens your email app with these details filled in. Nothing is stored on this site.</p>
               </div>
             </form>
           </div>
@@ -320,8 +338,21 @@ export default function App() {
                   <a className="px-5 py-3 rounded-xl border border-[#E7E7E7] font-bold hover:border-red-500 hover:text-red-500 transition-colors" href="#quote">Request Quote</a>
                 </div>
               </div>
-              <div className="bg-white border border-[#E7E7E7] rounded-2xl p-7 grid place-items-center text-[#666666]">
-                Map placeholder — add map after confirming the precise business address.
+              <div className="bg-white border border-[#E7E7E7] rounded-2xl p-7 flex flex-col justify-between">
+                <div>
+                  <h3 className="text-2xl mb-5">Visit us</h3>
+                  <p className="text-[#666666] text-sm mb-1">JP Nagar, 6th Phase</p>
+                  <p className="text-[#666666] text-sm">Bengaluru, Karnataka</p>
+                </div>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=JP+Nagar+6th+Phase+Bengaluru"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex items-center gap-2 font-bold text-red-500 hover:text-red-700 transition-colors"
+                >
+                  Open in Google Maps
+                  <span aria-hidden="true">↗</span>
+                </a>
               </div>
             </div>
           </div>
@@ -367,9 +398,8 @@ export default function App() {
               </ul>
             </div>
           </div>
-          <div className="pt-5 flex flex-wrap justify-between gap-3 text-sm text-white/45">
+          <div className="pt-5 text-sm text-white/45">
             <span>© 2026 Annapoorna. All rights reserved.</span>
-            <span>Privacy Policy · Terms and Conditions</span>
           </div>
         </div>
       </footer>

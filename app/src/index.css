@@ -15,35 +15,10 @@ html { scroll-behavior: smooth; }
 body { font-family: var(--font-body); color: var(--color-ink); background: #fff; }
 h1,h2,h3 { font-family: var(--font-display); letter-spacing: -0.03em; }
 
-.float-card-a {
-  animation: float-card-a 7s ease-in-out infinite;
-  transform-style: preserve-3d;
-  will-change: transform;
-}
+/* Keep anchored sections clear of the sticky header. */
+section[id] { scroll-margin-top: 6rem; }
 
-.float-card-b {
-  animation: float-card-b 8s ease-in-out infinite;
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-
-.float-card-c {
-  animation: float-card-c 6s ease-in-out infinite;
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-
-.float-card-d {
-  animation: float-card-d 5s ease-in-out infinite;
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-
-@keyframes float-card-d {
-  0%, 100% { transform: translate3d(0, 0, 0) rotateX(-4deg) rotateY(6deg) rotateZ(2deg); }
-  50% { transform: translate3d(0, -5px, 0) rotateX(-1deg) rotateY(2deg) rotateZ(0deg); }
-}
-
+/* Hero showcase motion (see HeroShowcase.tsx). */
 .hero-reveal {
   animation: hero-reveal 900ms cubic-bezier(0.2, 0.6, 0.3, 1) both;
 }
@@ -75,11 +50,7 @@ h1,h2,h3 { font-family: var(--font-display); letter-spacing: -0.03em; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .float-3d,
-  .float-card-a,
-  .float-card-b,
-  .float-card-c,
-  .float-card-d,
+  html { scroll-behavior: auto; }
   .hero-reveal,
   .hero-float,
   .hero-glow {
@@ -87,26 +58,6 @@ h1,h2,h3 { font-family: var(--font-display); letter-spacing: -0.03em; }
     transform: none !important;
   }
   .hero-reveal { opacity: 1 !important; }
-}
-
-@keyframes float-card-a {
-  0%, 100% { transform: translate3d(0, 0, 0) rotateX(10deg) rotateY(-12deg) rotateZ(-5deg); }
-  50% { transform: translate3d(0, -18px, 0) rotateX(6deg) rotateY(-4deg) rotateZ(-2deg); }
-}
-
-@keyframes float-card-b {
-  0%, 100% { transform: translate3d(0, 0, 0) rotateX(-8deg) rotateY(11deg) rotateZ(5deg); }
-  50% { transform: translate3d(0, -24px, 0) rotateX(-4deg) rotateY(6deg) rotateZ(2deg); }
-}
-
-@keyframes float-card-c {
-  0%, 100% { transform: translate3d(0, 0, 0) rotateX(5deg) rotateY(-6deg) rotateZ(-2deg); }
-  50% { transform: translate3d(0, -12px, 0) rotateX(9deg) rotateY(-2deg) rotateZ(-4deg); }
-}
-
-@keyframes route-enter {
-  from { opacity: 0; transform: translateY(14px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 a:focus-visible,
