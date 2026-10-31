@@ -16,15 +16,16 @@ export const HomePage: React.FC<HomePageProps> = ({ navigate }) => {
   return (
     <div className="flex flex-col">
       {/* 1. HERO SECTION */}
-      <section className="relative bg-[#252525] text-white overflow-hidden">
-        {/* Subtle background image overlay with enterprise lighting */}
+      <section className="relative bg-[#1A1A1A] text-white overflow-hidden">
+        {/* High-grade commercial enterprise facility visual */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80"
-            alt="Annapoorna Logistics and Industrial Warehousing"
-            className="w-full h-full object-cover opacity-20 filter grayscale"
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=85"
+            alt="Modern Enterprise Architecture and Corporate Operations"
+            className="w-full h-full object-cover opacity-35 object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#252525] via-[#252525]/90 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A1A] via-[#1A1A1A]/85 to-[#1A1A1A]/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent"></div>
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 lg:py-28">
