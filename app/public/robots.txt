@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pradyu12.github.io/Annapoorna/sitemap.xml
