@@ -7,13 +7,87 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="robots" content="index,follow,max-image-preview:standard" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' https://images.unsplash.com data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; require-trusted-types-for 'script'" />
-    <meta name="description" content="Bengaluru-based B2B supply and facility partner since 1998. Hygiene, pantry, industrial and packaging materials plus facility services across Karnataka." />
-    <meta name="theme-color" content="#D71920" />
+
+    <!-- Hardened Content Security Policy for Enterprise Static SPA -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' https://images.unsplash.com data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:;"
+    />
+
+    <!-- SEO Meta Descriptions & Canonical -->
+    <meta
+      name="description"
+      content="Annapoorna Enterprises is Bengaluru's premier B2B supply and facility solutions partner established in 1998. Commercial hygiene, pantry supplies, packaging materials, and integrated facility services across Karnataka."
+    />
+    <meta name="theme-color" content="#C8102E" />
+    <link rel="canonical" href="https://pradyu12.github.io/Annapoorna/" />
+
+    <!-- Open Graph & Social Sharing -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Annapoorna Enterprises | B2B Supply & Facility Partner, Bengaluru" />
-    <meta property="og:description" content="B2B supply and facility partner in Bengaluru since 1998 — hygiene, pantry, industrial and packaging materials, plus cleaning, maintenance and landscaping services across Karnataka." />
-    <title>Annapoorna Enterprises | B2B Supply & Facility Partner, Bengaluru</title>
+    <meta property="og:site_name" content="Annapoorna Enterprises" />
+    <meta property="og:title" content="Annapoorna Enterprises | Hygiene, Facility & Industrial Supplies" />
+    <meta
+      property="og:description"
+      content="Your trusted partner in hygiene, facility & industrial supplies since 1998. Serving enterprise, IT, manufacturing and institutional facilities across Karnataka."
+    />
+    <meta property="og:url" content="https://pradyu12.github.io/Annapoorna/" />
+    <meta property="og:locale" content="en_IN" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Annapoorna Enterprises | B2B Facility & Supplies Partner" />
+    <meta
+      name="twitter:description"
+      content="Commercial hygiene, pantry supplies, packaging materials, and integrated facility services in Bengaluru & Karnataka since 1998."
+    />
+
+    <title>Annapoorna Enterprises | Hygiene, Facility & Industrial Supplies | Bengaluru</title>
+
+    <!-- Schema.org Structured Data (Organization & LocalBusiness) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://pradyu12.github.io/Annapoorna/#organization",
+            "name": "Annapoorna Enterprises",
+            "url": "https://pradyu12.github.io/Annapoorna/",
+            "logo": "https://pradyu12.github.io/Annapoorna/logo.png",
+            "foundingDate": "1998",
+            "description": "Bengaluru-based B2B supply and integrated facility solutions provider established in 1998.",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+91-9108653934",
+              "contactType": "sales",
+              "areaServed": "IN-KA",
+              "availableLanguage": ["English", "Kannada", "Hindi"]
+            }
+          },
+          {
+            "@type": "LocalBusiness",
+            "@id": "https://pradyu12.github.io/Annapoorna/#localbusiness",
+            "name": "Annapoorna Enterprises",
+            "image": "https://pradyu12.github.io/Annapoorna/logo.png",
+            "telephone": "+91-9108653934",
+            "email": "sales@annapoornaentp.com",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "JP Nagar, 6th Phase",
+              "addressLocality": "Bengaluru",
+              "addressRegion": "Karnataka",
+              "postalCode": "560078",
+              "addressCountry": "IN"
+            },
+            "areaServed": {
+              "@type": "AdministrativeArea",
+              "name": "Karnataka"
+            },
+            "priceRange": "$$"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
