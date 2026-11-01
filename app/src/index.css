@@ -1,71 +1,100 @@
 @import "tailwindcss";
 
 @theme {
-  --color-red-500: #D71920;
-  --color-red-700: #A80F18;
-  --color-ink: #171717;
-  --color-muted: #666666;
-  --color-soft: #F7F7F7;
-  --color-line: #E7E7E7;
-  --font-display: "Manrope", "Plus Jakarta Sans", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
+  --color-primary-crimson: #C8102E;
+  --color-deep-crimson: #A30D25;
+  --color-charcoal: #1E1E1E;
+  --color-charcoal-light: #2A2A2A;
+  --color-white: #FFFFFF;
+  --color-light-bg: #F8F9FA;
+  --color-secondary-grey: #64748B;
+  --color-border-line: #E2E8F0;
+  --color-card-border: #E5E7EB;
+
+  /* Aliases for semantic usage */
+  --color-brand-red: #C8102E;
+  --color-brand-red-dark: #A30D25;
+  --color-ink: #1E1E1E;
+  --color-muted: #64748B;
+  --color-soft: #F8F9FA;
+
+  --font-display: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-html { scroll-behavior: smooth; }
-body { font-family: var(--font-body); color: var(--color-ink); background: #fff; }
-h1,h2,h3 { font-family: var(--font-display); letter-spacing: -0.03em; }
-
-/* Keep anchored sections clear of the sticky header. */
-section[id] { scroll-margin-top: 6rem; }
-
-/* Hero showcase motion (see HeroShowcase.tsx). */
-.hero-reveal {
-  animation: hero-reveal 900ms cubic-bezier(0.2, 0.6, 0.3, 1) both;
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
 }
 
-.hero-float {
-  animation: hero-float 7s ease-in-out infinite;
-  transform-style: preserve-3d;
-  will-change: transform;
+body {
+  font-family: var(--font-body);
+  color: #1E1E1E;
+  background-color: #FFFFFF;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.hero-glow {
-  animation: hero-glow 6s ease-in-out infinite;
-  will-change: transform, opacity;
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+  color: #1E1E1E;
+  font-weight: 700;
 }
 
-@keyframes hero-reveal {
-  from { opacity: 0; transform: translateY(24px) scale(0.94); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@keyframes hero-float {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  50% { transform: translate3d(0, -14px, 0); }
-}
-
-@keyframes hero-glow {
-  0%, 100% { opacity: 0.65; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.09); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .hero-reveal,
-  .hero-float,
-  .hero-glow {
-    animation: none !important;
-    transform: none !important;
-  }
-  .hero-reveal { opacity: 1 !important; }
-}
-
+/* Accessibility focus indicator */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid #D71920;
-  outline-offset: 2px;
-  border-color: #D71920;
+  outline: 2px solid #C8102E;
+  outline-offset: 3px;
+}
+
+/* Scroll margin for sticky header */
+section[id] {
+  scroll-margin-top: 7rem;
+}
+
+/* Corporate Subtle Grid Pattern Background */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Purposeful, subtle animations */
+.fade-in {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
