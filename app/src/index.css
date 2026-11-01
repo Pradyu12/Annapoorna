@@ -3,22 +3,23 @@
 @theme {
   --color-primary-crimson: #C8102E;
   --color-deep-crimson: #A30D25;
-  --color-charcoal: #252525;
+  --color-charcoal: #1E1E1E;
+  --color-charcoal-light: #2A2A2A;
   --color-white: #FFFFFF;
-  --color-light-bg: #F7F7F7;
-  --color-secondary-grey: #707070;
-  --color-border-line: #E5E5E5;
-  --color-card-border: #ECECEC;
+  --color-light-bg: #F8F9FA;
+  --color-secondary-grey: #64748B;
+  --color-border-line: #E2E8F0;
+  --color-card-border: #E5E7EB;
 
   /* Aliases for semantic usage */
   --color-brand-red: #C8102E;
   --color-brand-red-dark: #A30D25;
-  --color-ink: #252525;
-  --color-muted: #707070;
-  --color-soft: #F7F7F7;
+  --color-ink: #1E1E1E;
+  --color-muted: #64748B;
+  --color-soft: #F8F9FA;
 
-  --font-display: "Manrope", "Plus Jakarta Sans", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 html {
@@ -28,7 +29,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  color: #252525;
+  color: #1E1E1E;
   background-color: #FFFFFF;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -37,8 +38,9 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  letter-spacing: -0.025em;
-  color: #252525;
+  letter-spacing: -0.02em;
+  color: #1E1E1E;
+  font-weight: 700;
 }
 
 /* Accessibility focus indicator */
@@ -53,7 +55,20 @@ textarea:focus-visible {
 
 /* Scroll margin for sticky header */
 section[id] {
-  scroll-margin-top: 6.5rem;
+  scroll-margin-top: 7rem;
+}
+
+/* Corporate Subtle Grid Pattern Background */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
 /* Purposeful, subtle animations */

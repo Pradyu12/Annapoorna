@@ -39,14 +39,14 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate, initialCat
     <div className="py-12 bg-white">
       {/* Header Banner */}
       <div className="max-w-7xl mx-auto px-6 mb-12">
-        <div className="border-b border-[#ECECEC] pb-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#F7F7F7] border border-[#ECECEC] text-xs font-bold uppercase tracking-wider text-[#C8102E] mb-3">
+        <div className="border-b border-slate-200 pb-8">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-slate-100 border border-slate-200 text-xs font-bold uppercase tracking-wider text-[#C8102E] mb-3">
             Enterprise Product Catalogue
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#252525] mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1E1E1E] mb-4">
             B2B Commercial & Institutional Supplies
           </h1>
-          <p className="text-sm sm:text-base text-[#707070] max-w-3xl leading-relaxed">
+          <p className="text-sm sm:text-base text-slate-600 max-w-3xl leading-relaxed">
             Consolidated procurement across seven structured categories. Built for continuous supply agreements, volume contracts, and corporate site facilities across Bengaluru and Karnataka.
           </p>
         </div>
@@ -60,10 +60,10 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate, initialCat
                 key={cat}
                 type="button"
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-lg text-xs font-bold whitespace-nowrap transition-all duration-200 ${
+                className={`px-3.5 py-2 rounded-md text-xs font-bold whitespace-nowrap transition-all duration-150 ${
                   selectedCategory === cat
                     ? 'bg-[#C8102E] text-white shadow-xs'
-                    : 'bg-[#F7F7F7] text-[#252525] hover:bg-[#ECECEC]'
+                    : 'bg-slate-100 text-[#1E1E1E] hover:bg-slate-200'
                 }`}
               >
                 {cat}
@@ -78,10 +78,10 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate, initialCat
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search products, applications, or specs..."
-              className="w-full pl-9 pr-4 py-2.5 rounded-lg border border-[#ECECEC] text-xs text-[#252525] bg-white focus:border-[#C8102E] focus:outline-none transition-colors"
+              className="w-full pl-9 pr-4 py-2.5 rounded-md border border-slate-300 text-xs text-[#1E1E1E] bg-white focus:border-[#C8102E] focus:outline-none transition-colors"
             />
             <svg
-              className="w-4 h-4 text-[#707070] absolute left-3 top-3 pointer-events-none"
+              className="w-4 h-4 text-slate-400 absolute left-3 top-3 pointer-events-none"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -92,7 +92,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate, initialCat
               <button
                 type="button"
                 onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-2.5 text-xs text-[#707070] hover:text-[#252525]"
+                className="absolute right-3 top-2.5 text-xs text-slate-400 hover:text-[#1E1E1E]"
                 aria-label="Clear search"
               >
                 ✕
@@ -105,14 +105,14 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate, initialCat
       {/* Product Grid */}
       <div className="max-w-7xl mx-auto px-6">
         {filteredProducts.length === 0 ? (
-          <div className="p-16 text-center rounded-xl bg-[#F7F7F7] border border-[#ECECEC]">
-            <div className="w-12 h-12 rounded-full bg-white border border-[#ECECEC] text-[#C8102E] flex items-center justify-center mx-auto mb-3">
+          <div className="p-16 text-center rounded-xl bg-slate-50 border border-slate-200">
+            <div className="w-12 h-12 rounded-full bg-white border border-slate-200 text-[#C8102E] flex items-center justify-center mx-auto mb-3">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="text-base font-bold text-[#252525] mb-1">No products found</h3>
-            <p className="text-xs text-[#707070] max-w-sm mx-auto mb-4">
+            <h3 className="text-base font-bold text-[#1E1E1E] mb-1">No products found</h3>
+            <p className="text-xs text-slate-600 max-w-sm mx-auto mb-4">
               We couldn't find items matching "{searchQuery}". You can clear your filters or contact our sales desk for custom product inquiries.
             </p>
             <button
@@ -121,7 +121,7 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate, initialCat
                 setSelectedCategory('All');
                 setSearchQuery('');
               }}
-              className="px-4 py-2 bg-[#252525] text-white text-xs font-bold rounded-lg hover:bg-black transition-colors"
+              className="px-4 py-2 bg-[#1E1E1E] text-white text-xs font-bold rounded-md hover:bg-black transition-colors"
             >
               Reset Filters
             </button>
@@ -131,35 +131,35 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate, initialCat
             {filteredProducts.map((product) => (
               <div
                 key={product.id}
-                className="bg-white rounded-xl border border-[#ECECEC] overflow-hidden flex flex-col justify-between hover:shadow-md transition-all duration-200 group"
+                className="bg-white rounded-xl border border-slate-200 overflow-hidden flex flex-col justify-between hover:shadow-md transition-all duration-200 group"
               >
                 <div>
-                  <div className="relative h-48 bg-[#252525] overflow-hidden">
+                  <div className="relative h-48 bg-slate-900 overflow-hidden">
                     <img
                       src={product.imageUrl}
                       alt={product.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                       loading="lazy"
                     />
-                    <div className="absolute top-3 left-3 px-2 py-0.5 rounded bg-white/90 backdrop-blur text-[10px] font-bold text-[#252525] shadow-xs">
+                    <div className="absolute top-3 left-3 px-2 py-0.5 rounded bg-white/95 backdrop-blur text-[10px] font-bold text-[#1E1E1E] shadow-xs">
                       {product.category}
                     </div>
                   </div>
 
                   <div className="p-5">
-                    <h3 className="text-base font-bold text-[#252525] group-hover:text-[#C8102E] transition-colors mb-2 line-clamp-1">
+                    <h3 className="text-base font-bold text-[#1E1E1E] group-hover:text-[#C8102E] transition-colors mb-2 line-clamp-1">
                       {product.name}
                     </h3>
-                    <p className="text-xs text-[#707070] line-clamp-3 mb-4 leading-relaxed">
+                    <p className="text-xs text-slate-600 line-clamp-3 mb-4 leading-relaxed">
                       {product.description}
                     </p>
 
-                    <div className="space-y-1.5 border-t border-[#ECECEC] pt-3 text-[11px] text-[#707070]">
+                    <div className="space-y-1.5 border-t border-slate-100 pt-3 text-[11px] text-slate-600">
                       <div>
-                        <strong className="text-[#252525]">Standard Packaging:</strong> {product.packaging}
+                        <strong className="text-[#1E1E1E]">Standard Packaging:</strong> {product.packaging}
                       </div>
                       <div>
-                        <strong className="text-[#252525]">Applications:</strong> {product.applications.join(', ')}
+                        <strong className="text-[#1E1E1E]">Applications:</strong> {product.applications.join(', ')}
                       </div>
                     </div>
                   </div>
@@ -169,14 +169,14 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate, initialCat
                   <button
                     type="button"
                     onClick={() => setActiveProductModal(product)}
-                    className="py-2 px-3 rounded-lg border border-[#ECECEC] text-xs font-bold text-[#252525] hover:bg-[#F7F7F7] transition-colors"
+                    className="py-2 px-3 rounded-md border border-slate-300 text-xs font-bold text-[#1E1E1E] hover:bg-slate-50 transition-colors"
                   >
                     View Details
                   </button>
                   <button
                     type="button"
                     onClick={() => handleRequestQuote(product)}
-                    className="py-2 px-3 rounded-lg bg-[#C8102E] hover:bg-[#A30D25] text-xs font-bold text-white transition-colors"
+                    className="py-2 px-3 rounded-md bg-[#C8102E] hover:bg-[#A30D25] text-xs font-bold text-white transition-colors"
                   >
                     Request Quote
                   </button>
@@ -194,8 +194,8 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate, initialCat
           role="dialog"
           aria-modal="true"
         >
-          <div className="bg-white rounded-xl border border-[#ECECEC] max-w-lg w-full overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 duration-200">
-            <div className="relative h-56 bg-[#252525]">
+          <div className="bg-white rounded-xl border border-slate-200 max-w-lg w-full overflow-hidden shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+            <div className="relative h-56 bg-slate-900">
               <img
                 src={activeProductModal.imageUrl}
                 alt={activeProductModal.name}
@@ -204,36 +204,36 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate, initialCat
               <button
                 type="button"
                 onClick={() => setActiveProductModal(null)}
-                className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 text-[#252525] font-bold flex items-center justify-center hover:bg-white shadow"
+                className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 text-[#1E1E1E] font-bold flex items-center justify-center hover:bg-white shadow"
                 aria-label="Close modal"
               >
                 ✕
               </button>
-              <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded bg-[#252525]/85 text-xs font-bold text-white">
+              <div className="absolute bottom-3 left-3 px-2.5 py-1 rounded bg-[#1E1E1E]/85 text-xs font-bold text-white">
                 {activeProductModal.category}
               </div>
             </div>
 
             <div className="p-6">
-              <h3 className="text-xl font-bold text-[#252525] mb-2">
+              <h3 className="text-xl font-bold text-[#1E1E1E] mb-2">
                 {activeProductModal.name}
               </h3>
-              <p className="text-xs sm:text-sm text-[#707070] leading-relaxed mb-4">
+              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
                 {activeProductModal.description}
               </p>
 
-              <div className="p-3.5 bg-[#F7F7F7] rounded-lg border border-[#ECECEC] space-y-2 text-xs mb-6">
+              <div className="p-3.5 bg-slate-50 rounded-lg border border-slate-200 space-y-2 text-xs mb-6">
                 <div>
-                  <span className="font-bold text-[#252525]">Commercial Packaging:</span>{' '}
-                  <span className="text-[#707070]">{activeProductModal.packaging}</span>
+                  <span className="font-bold text-[#1E1E1E]">Commercial Packaging:</span>{' '}
+                  <span className="text-slate-600">{activeProductModal.packaging}</span>
                 </div>
                 <div>
-                  <span className="font-bold text-[#252525]">Primary Site Applications:</span>{' '}
-                  <span className="text-[#707070]">{activeProductModal.applications.join(', ')}</span>
+                  <span className="font-bold text-[#1E1E1E]">Primary Site Applications:</span>{' '}
+                  <span className="text-slate-600">{activeProductModal.applications.join(', ')}</span>
                 </div>
                 <div>
-                  <span className="font-bold text-[#252525]">Fulfilled By:</span>{' '}
-                  <span className="text-[#707070]">Annapoorna Enterprises Logistics (Bengaluru / Karnataka)</span>
+                  <span className="font-bold text-[#1E1E1E]">Fulfilled By:</span>{' '}
+                  <span className="text-slate-600">Annapoorna Enterprises Logistics (Bengaluru / Karnataka)</span>
                 </div>
               </div>
 
@@ -241,14 +241,14 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({ navigate, initialCat
                 <button
                   type="button"
                   onClick={() => setActiveProductModal(null)}
-                  className="px-4 py-2 rounded-lg border border-[#ECECEC] text-xs font-bold text-[#252525] hover:bg-[#F7F7F7] transition-colors"
+                  className="px-4 py-2 rounded-md border border-slate-300 text-xs font-bold text-[#1E1E1E] hover:bg-slate-50 transition-colors"
                 >
                   Close
                 </button>
                 <button
                   type="button"
                   onClick={() => handleRequestQuote(activeProductModal)}
-                  className="px-5 py-2 rounded-lg bg-[#C8102E] hover:bg-[#A30D25] text-xs font-bold text-white transition-colors"
+                  className="px-5 py-2 rounded-md bg-[#C8102E] hover:bg-[#A30D25] text-xs font-bold text-white transition-colors"
                 >
                   Request a Product Quote
                 </button>
